@@ -34,7 +34,15 @@ public class KeyNoteController : MonoBehaviour
                         audioSource.clip = audioClips[0];
                         audioSource.Play();
                         break;
+                    case "black_01":
+                        audioSource.clip = audioClips[0];
+                        audioSource.Play();
+                        break;
                     case "keyBoard/white_01":
+                        audioSource.clip = audioClips[0];
+                        audioSource.Play();
+                        break;
+                    case "white_01":
                         audioSource.clip = audioClips[0];
                         audioSource.Play();
                         break;
