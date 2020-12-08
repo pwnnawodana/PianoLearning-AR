@@ -9,12 +9,15 @@ public class KeyNoteController : MonoBehaviour
     public AudioClip[] blackAudioClips;
     public AudioClip[] whiteAudioClips;
 
+    Material material;
+
     string keyName;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        material = GetComponent<Renderer>().material;// fetch the material from the renderer
     }
 
     // Update is called once per frame
@@ -224,13 +227,14 @@ public class KeyNoteController : MonoBehaviour
                     default:
                         break;
                 }
+                changeMaterial(keyName, true);
             }
         }
     }
 
     private void playKeyTone(bool isBlackKey, int keyNumber)
     {
-        if (isBlackKey.Equals(true))
+        if (isBlackKey)
         {
             audioSource.clip = blackAudioClips[keyNumber - 1];
         }
@@ -238,7 +242,24 @@ public class KeyNoteController : MonoBehaviour
         {
             audioSource.clip = whiteAudioClips[keyNumber - 1];
         }
-        
         audioSource.Play();
+    }
+
+    private void changeMaterial(string keyName ,bool isPressed)
+    {
+        GameObject gameObject = GameObject.Find(keyName);
+        if (gameObject != null)
+        {
+            var gameObjectRenderer = gameObject.GetComponent<Renderer>();
+            if (isPressed)
+            {
+                gameObjectRenderer.material.SetColor("_Color", Color.red);
+            }
+            else
+            {
+                gameObjectRenderer.material.SetColor("_Color", Color.white);
+            }
+
+        }        
     }
 }
