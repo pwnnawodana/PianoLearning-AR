@@ -31,104 +31,79 @@ public class KeyNoteController : MonoBehaviour
                 {
                     //black
                     case "black_01":
-                        audioSource.clip = blackAudioClips[0];
-                        audioSource.Play();
+                        playKeyTone(true, 1);
                         break;
                     case "black_02":
-                        audioSource.clip = blackAudioClips[1];
-                        audioSource.Play();
+                        playKeyTone(true, 2);
                         break;
                     case "black_03":
-                        audioSource.clip = blackAudioClips[2];
-                        audioSource.Play();
+                        playKeyTone(true, 3);
                         break;
                     case "black_04":
-                        audioSource.clip = blackAudioClips[3];
-                        audioSource.Play();
+                        playKeyTone(true, 4);
                         break;
                     case "black_05":
-                        audioSource.clip = blackAudioClips[4];
-                        audioSource.Play();
+                        playKeyTone(true, 5);
                         break;
                     case "black_06":
-                        audioSource.clip = blackAudioClips[5];
-                        audioSource.Play();
+                        playKeyTone(true, 6);
                         break;
                     case "black_07":
-                        audioSource.clip = blackAudioClips[6];
-                        audioSource.Play();
+                        playKeyTone(true, 7);
                         break;
                     case "black_08":
-                        audioSource.clip = blackAudioClips[7];
-                        audioSource.Play();
+                        playKeyTone(true, 8);
                         break;
                     case "black_09":
-                        audioSource.clip = blackAudioClips[8];
-                        audioSource.Play();
+                        playKeyTone(true, 9);
                         break;
                     case "black_10":
-                        audioSource.clip = blackAudioClips[9];
-                        audioSource.Play();
+                        playKeyTone(true, 10);
                         break;
                     case "black_11":
-                        audioSource.clip = blackAudioClips[10];
-                        audioSource.Play();
+                        playKeyTone(true, 11);
                         break;
                     case "black_12":
-                        audioSource.clip = blackAudioClips[11];
-                        audioSource.Play();
+                        playKeyTone(true, 12);
                         break;
                     case "black_13":
-                        audioSource.clip = blackAudioClips[12];
-                        audioSource.Play();
+                        playKeyTone(true, 13);
                         break;
                     case "black_14":
-                        audioSource.clip = blackAudioClips[13];
-                        audioSource.Play();
+                        playKeyTone(true, 14);
                         break;
                     case "black_15":
-                        audioSource.clip = blackAudioClips[14];
-                        audioSource.Play();
+                        playKeyTone(true, 15);
                         break;
                     case "black_16":
-                        audioSource.clip = blackAudioClips[15];
-                        audioSource.Play();
+                        playKeyTone(true, 16);
                         break;
                     case "black_17":
-                        audioSource.clip = blackAudioClips[16];
-                        audioSource.Play();
+                        playKeyTone(true, 17);
                         break;
                     case "black_18":
-                        audioSource.clip = blackAudioClips[17];
-                        audioSource.Play();
+                        playKeyTone(true, 18);
                         break;
                     case "black_19":
-                        audioSource.clip = blackAudioClips[18];
-                        audioSource.Play();
+                        playKeyTone(true, 19);
                         break;
                     case "black_20":
-                        audioSource.clip = blackAudioClips[19];
-                        audioSource.Play();
+                        playKeyTone(true, 20);
                         break;
                     case "black_21":
-                        audioSource.clip = blackAudioClips[20];
-                        audioSource.Play();
+                        playKeyTone(true, 21);
                         break;
                     case "black_22":
-                        audioSource.clip = blackAudioClips[21];
-                        audioSource.Play();
+                        playKeyTone(true, 22);
                         break;
                     case "black_23":
-                        audioSource.clip = blackAudioClips[22];
-                        audioSource.Play();
+                        playKeyTone(true, 23);
                         break;
                     case "black_24":
-                        audioSource.clip = blackAudioClips[23];
-                        audioSource.Play();
+                        playKeyTone(true, 24);
                         break;
                     case "black_25":
-                        audioSource.clip = blackAudioClips[24];
-                        audioSource.Play();
+                        playKeyTone(false, 25);
                         break;
 
                     // White Keys
@@ -243,7 +218,7 @@ public class KeyNoteController : MonoBehaviour
 
                     // Deafult check
                     case "A":
-                        audioSource.clip = blackAudioClips[4];
+                        audioSource.clip = blackAudioClips[Random.Range(0,20)];
                         audioSource.Play();
                         break;
                     default:
@@ -255,7 +230,7 @@ public class KeyNoteController : MonoBehaviour
 
     private void playKeyTone(bool isBlackKey, int keyNumber)
     {
-        if (true)
+        if (isBlackKey.Equals(true))
         {
             audioSource.clip = blackAudioClips[keyNumber - 1];
         }
