@@ -236,40 +236,56 @@ public class KeyNoteController : MonoBehaviour
             {
                 changeMaterial(keyName, false);
             }
-            
+
         }
     }
 
+    /// <summary>
+    /// Assigning the key notes to the related keys
+    /// </summary>
+    /// <param name="isBlackKey"> set TRUE if the related key is black, if it is white set FALSE</param>
+    /// <param name="keyNumber">set the key number ( starting from 1 )</param>
     private void playKeyTone(bool isBlackKey, int keyNumber)
     {
+        AudioClip clip; // key note value
+
         if (isBlackKey)
         {
-            audioSource.clip = blackAudioClips[keyNumber - 1];
+            clip = blackAudioClips[keyNumber - 1];
         }
         else
         {
-            audioSource.clip = whiteAudioClips[keyNumber - 1];
+            clip = whiteAudioClips[keyNumber - 1];
         }
-        audioSource.Play();
+        // use audioSource.PlayOneShot() instead of audioSource.play() because it overrides the notes when press the next key
+        audioSource.PlayOneShot(clip);
     }
 
-    private void changeMaterial(string keyName ,bool isPressed)
+    /// <summary>
+    /// Change the material color of the pressing key
+    /// </summary>
+    /// <param name="keyName"> collider returning name of the key </param>
+    /// <param name="isPressed"> check whether the key prossed or not </param>
+    private void changeMaterial(string keyName, bool isPressed)
     {
         GameObject gameObject = GameObject.Find(keyName);
-        if (gameObject != null)
+        if (gameObject != null && IsKey(keyName))
         {
             var gameObjectRenderer = gameObject.GetComponent<Renderer>();
             Color color = gameObjectRenderer.material.GetColor("_Color");
             gameObjectRenderer.material.SetColor("_Color", Color.red);
-/*
-            if (isPressed)
-            {
-            }
-            else
-            {
-                gameObjectRenderer.material.SetColor("_Color", color);
-            }*/
+        }
+    }
 
-        }        
+    /// <summary>
+    /// check wheather the pressed object is a key or not
+    /// </summary>
+    /// <param name="keyName"> collide game object name </param>
+    /// <returns> return TRUE if is a key, else false </returns>
+    private bool IsKey(string keyName)
+    {
+        if (keyName.Equals("Piano case") || keyName.Equals("PlaneOne") || keyName.Equals("PlaneTwo")) return false;
+        else if (keyName.Equals("2 to 6 keys") || keyName.Equals("3 to 16 keys") || keyName.Equals("4 to 4 keys")) return false;
+        return true;
     }
 }

@@ -26,7 +26,7 @@ public class KeyMaterialController : MonoBehaviour
         if (currentGameObjectRenderer.material.GetColor("_Color") 
             != gameObjectDefaultMaterialColor)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             currentGameObjectRenderer.material
                 .SetColor("_Color", gameObjectDefaultMaterialColor);
         }
